@@ -6,7 +6,7 @@
       <v-chip small close v-model="chip2"  label>tab2</v-chip>
       <v-chip small close v-model="chip3"  label>tab3</v-chip>
       <v-chip small close v-model="chip4"  label>tab4</v-chip>
-      <v-icon color="orange darken-2">note_add</v-icon>
+      <v-btn depressed small><v-icon color="amber">add</v-icon></v-btn>
     </v-card>
 
     <tab1></tab1>

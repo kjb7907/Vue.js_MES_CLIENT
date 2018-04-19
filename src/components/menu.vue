@@ -29,12 +29,14 @@
               <v-btn small flat>edit</v-btn>
             </v-flex>
           </v-layout>
+
           <v-divider
             dark
             v-else-if="item.divider"
             class="my-3"
             :key="i"
           ></v-divider>
+
           <v-list-tile
             :key="i"
             v-else
@@ -44,24 +46,48 @@
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title class="grey--text">
+              <v-list-tile-title>
                 {{ item.text }}
               </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+
         </template>
       </v-list>
     </v-navigation-drawer>
 
     <v-toolbar app absolute clipped-left flat height="50" style="border-bottom: solid lightgray 1px; background-color: white">
       <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
+
       <span class="title ml-3 mr-5">DX-<span class="text">MES</span></span>
-      <img src="@/assets/logo_collabee.png" style="height: 30px;">
+
       <v-spacer></v-spacer>
+
+      <img src="@/assets/logo_collabee.png" style="height: 30px;">
+
+      <v-spacer></v-spacer>
+
+      <v-btn fab depressed small>
+        <v-icon>android</v-icon>
+      </v-btn>
+
+      <v-menu offset-y>
+        <v-btn color="white" depressed small slot="activator">사용자<v-icon>arrow_drop_down</v-icon></v-btn>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title>드롭메뉴1</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-title>드롭메뉴2</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
 
     <v-content>
+
       <base_content></base_content>
+
     </v-content>
   </v-app>
 </template>
