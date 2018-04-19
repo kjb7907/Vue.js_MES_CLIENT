@@ -7,6 +7,7 @@
       class="grey lighten-4"
       app
       v-model="drawer"
+      width="200"
     >
       <v-list
         dense
@@ -52,9 +53,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar color="#a6a6a6" app absolute clipped-left>
+    <v-toolbar app absolute clipped-left flat height="50" style="border-bottom: solid lightgray 1px; background-color: white">
       <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
       <span class="title ml-3 mr-5">DX-<span class="text">MES</span></span>
+      <img src="@/assets/logo_collabee.png" style="height: 30px;">
       <v-spacer></v-spacer>
     </v-toolbar>
 

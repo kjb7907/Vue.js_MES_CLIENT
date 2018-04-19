@@ -2,20 +2,30 @@
   <div>
 
     <v-card>
-      <v-chip close v-model="chip1"  label color="amber">Complete</v-chip>
-      <v-chip close v-model="chip2"  label>Complete</v-chip>
-      <v-chip close v-model="chip3"  label>Complete</v-chip>
-      <v-chip close v-model="chip4"  label>Complete</v-chip>
-      <v-icon large color="orange darken-2">note_add</v-icon>
-
+      <v-chip small close v-model="chip1"  label color="amber">tab1</v-chip>
+      <v-chip small close v-model="chip2"  label>tab2</v-chip>
+      <v-chip small close v-model="chip3"  label>tab3</v-chip>
+      <v-chip small close v-model="chip4"  label>tab4</v-chip>
+      <v-icon color="orange darken-2">note_add</v-icon>
     </v-card>
+
+    <tab1></tab1>
+    <tab2></tab2>
+    <tab3></tab3>
+    <tab4></tab4>
 
   </div>
 </template>
 
 <script>
+  import tab1 from '@/components/tab1'
+  import tab2 from '@/components/tab2'
+  import tab3 from '@/components/tab3'
+  import tab4 from '@/components/tab4'
+
   export default {
     name: 'HelloWorld',
+    components:{ tab1, tab2 ,tab3 ,tab4 },
     data () {
       return {
         chip1: true,
