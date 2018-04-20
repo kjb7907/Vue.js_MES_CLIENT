@@ -4,12 +4,14 @@
     <v-card>
       <v-chip v-for="(i, key, index) in tabs" :key="index"
               v-if="i.isOnOff"
-              v-model="i.isOnOff"
-              label small close
+              label small
               :color="i.color"
-              @click="tabSelect(key)"
-              >{{ i.currPage }}</v-chip>
-      <v-chip label small><v-icon color="black">add</v-icon></v-chip>
+              @click="selectTab(key)"
+              >
+        {{key}}. {{ i.currPage }} &nbsp;
+        <v-icon @click="closeTab(i.isSelect,key)" color="black" small>clear</v-icon>
+      </v-chip>
+      <v-chip label small @click="addTab()"><v-icon color="black">add_circle_outline</v-icon></v-chip>
     </v-card>
 
   </div>
@@ -35,8 +37,14 @@
       }
     },
     methods: {
-      tabSelect(index){
-        this.$store.dispatch('tabSelect', index);
+      addTab(){
+        this.$store.dispatch('addTab');
+      },
+      selectTab(index){
+        this.$store.dispatch('selectTab', index);
+      },
+      closeTab(isSelect, index){
+          this.$store.dispatch('closeTab', index);
       }
     },
     mounted(){

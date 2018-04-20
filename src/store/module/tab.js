@@ -3,36 +3,13 @@ import * as types from '../mutation-types'
 const state = {
   tabs: [
     {
-      id: 'tab1',
       isOnOff: true,
       isSelect:true,
       currPage: 'page1',
       color:'amber'
-    },
-    {
-      id: 'tab2',
-      isOnOff: true,
-      isSelect:false,
-      currPage: 'page1',
-      color:''
-    },
-    {
-      id: 'tab3',
-      isOnOff: false,
-      isSelect:true,
-      currPage: 'page1',
-      color:''
-    },
-    {
-      id: 'tab4',
-      isOnOff: false,
-      isSelect:true,
-      currPage: 'page1',
-      color:''
     }
   ],
   currTabIndex:0,
-  tabCount: 0,
   tabCountMax:4
 }
 
@@ -41,21 +18,43 @@ const mutations = {
   //   state.device.isMobile = device === 'mobile'
   //   state.device.isTablet = device === 'tablet'
   // },
-  tabSelect (state, index) {
+  addTab (state) {
+    state.tabs.push({
+      isOnOff: true,
+      isSelect:false,
+      currPage: '빈페이지',
+      color:''
+    })
+  },
+  selectTab (state, index) {
     state.tabs[index].isSelect=true;
     state.tabs[index].color='amber';
     state.currTabIndex=index;
   },
-  tabDeselect (state, index) {
+  deselectTab (state, index) {
+    console.log(state.tabs[index]);
     state.tabs[index].isSelect=false;
     state.tabs[index].color='';
+  },
+  closeTab (state,index) {
+    state.tabs.splice(index,1)
   }
 }
 
 const actions= {
-  tabSelect ({commit, state}, index) {
-    commit('tabDeselect', state.currTabIndex);
-    commit('tabSelect', index);
+  addTab ({commit}) {
+    commit('addTab');
+  },
+  selectTab ({commit, state}, index) {
+    if (state.tabs[index] != undefined) {
+      commit('deselectTab', state.currTabIndex);
+      commit('selectTab', index);
+    };
+  },
+  closeTab ({commit}, index) {
+    commit('deselectTab', state.currTabIndex);
+    commit('selectTab', index-1);
+    commit('closeTab', index)
   }
 }
 

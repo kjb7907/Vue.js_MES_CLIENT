@@ -1,23 +1,21 @@
 <template>
   <div>
-
-    <!--<tab1></tab1>-->
-    <!--<tab2></tab2>-->
-    <!--<tab3></tab3>-->
-    <!--<tab4></tab4>-->
-
+    <page1></page1>
+    <page2></page2>
+    <page3></page3>
+    <page4></page4>
   </div>
 </template>
-
+pages
 <script>
-  import tab1 from '@/components/tab1'
-  import tab2 from '@/components/tab2'
-  import tab3 from '@/components/tab3'
-  import tab4 from '@/components/tab4'
+  import page1 from '@/pages/page1'
+  import page2 from '@/pages/page2'
+  import page3 from '@/pages/page3'
+  import page4 from '@/pages/page4'
 
   export default {
-    name: 'HelloWorld',
-    components:{ tab1, tab2 ,tab3 ,tab4 },
+    name: 'tabContent',
+    components:{ page1, page2 ,page3 , page4  },
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'

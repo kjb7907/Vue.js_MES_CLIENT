@@ -87,7 +87,8 @@
     <v-content>
 
       <tab-bar></tab-bar>
-      <tab-content></tab-content>
+      asdasdasdasd
+      <tab-content v-for="(i, key, index) in tabs" :key="index"></tab-content>
 
     </v-content>
   </v-app>
@@ -129,6 +130,9 @@
       source: String
     },
     computed: {
+      tabs(){
+        return this.$store.state.tabs;
+      }
     },
     mounted() {
 
