@@ -86,17 +86,22 @@
 
     <v-content>
 
-      <base_content></base_content>
+      <tab-bar></tab-bar>
+      <tab-content></tab-content>
 
     </v-content>
   </v-app>
 </template>
 
 <script>
-  import content from './content'
+  import tabBar from './tabBar'
+  import tabContent from './tabContent'
 
   export default {
-    components:{ base_content: content },
+    components:{
+      tabBar: tabBar,
+      tabContent: tabContent
+    },
     data: () => ({
       active: null,
       drawer: null,
