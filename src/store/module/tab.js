@@ -5,7 +5,8 @@ const state = {
     {
       isOnOff: true,
       isSelect:true,
-      currPage: 'page1',
+      pageId: 'NewTab',
+      pageText: '새 탭',
       color:'amber'
     }
   ],
@@ -22,7 +23,8 @@ const mutations = {
     state.tabs.push({
       isOnOff: true,
       isSelect:false,
-      currPage: '빈페이지',
+      pageId: 'NewTab',
+      pageText: '새 탭',
       color:''
     })
   },
@@ -32,12 +34,15 @@ const mutations = {
     state.currTabIndex=index;
   },
   deselectTab (state, index) {
-    console.log(state.tabs[index]);
     state.tabs[index].isSelect=false;
     state.tabs[index].color='';
   },
   closeTab (state,index) {
     state.tabs.splice(index,1)
+  },
+  selectMenu (state, payload){
+    state.tabs[state.currTabIndex].pageId = payload.pageId;
+    state.tabs[state.currTabIndex].pageText = payload.pageText;
   }
 }
 
@@ -55,6 +60,9 @@ const actions= {
     commit('deselectTab', state.currTabIndex);
     commit('selectTab', index-1);
     commit('closeTab', index)
+  },
+  selectMenu ({commit}, payload) {
+    commit('selectMenu', payload)
   }
 }
 

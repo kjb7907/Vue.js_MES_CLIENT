@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <v-text-field></v-text-field>
   </div>
 </template>
 

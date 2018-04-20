@@ -40,7 +40,7 @@
           <v-list-tile
             :key="i"
             v-else
-            @click=""
+            @click="selectMenu(item.pageId,item.text)"
           >
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -87,8 +87,7 @@
     <v-content>
 
       <tab-bar></tab-bar>
-      asdasdasdasd
-      <tab-content v-for="(i, key, index) in tabs" :key="index"></tab-content>
+      <tab-content v-for="(i, key, index) in tabs" :key="index" v-show="i.isSelect" :pageId="i.pageId"></tab-content>
 
     </v-content>
   </v-app>
@@ -107,10 +106,12 @@
       active: null,
       drawer: null,
       items: [
-        { icon: 'lightbulb_outline', text: '화면1' },
-        { icon: 'lightbulb_outline', text: '화면2' },
-        { icon: 'lightbulb_outline', text: '화면3' },
-        { icon: 'lightbulb_outline', text: '화면4' },
+        { icon: 'lightbulb_outline', text: '화면1', pageId: 'page1' },
+        { icon: 'lightbulb_outline', text: '화면2', pageId: 'page2' },
+        { icon: 'lightbulb_outline', text: '화면3', pageId: 'page3' },
+        { icon: 'lightbulb_outline', text: '화면4', pageId: 'page4' },
+
+/*
         { icon: 'lightbulb_outline', text: 'Notes' },
         { icon: 'touch_app', text: 'Reminders' },
         { heading: 'Labels' },
@@ -124,6 +125,7 @@
         { icon: 'help', text: 'Help' },
         { icon: 'phonelink', text: 'App downloads' },
         { icon: 'keyboard', text: 'Keyboard shortcuts' }
+*/
       ]
     }),
     props: {
@@ -131,11 +133,15 @@
     },
     computed: {
       tabs(){
-        return this.$store.state.tabs;
+        return this.$store.state.tab.tabs;
+      }
+    },
+    methods: {
+      selectMenu(pageId, pageText) {
+        this.$store.dispatch('selectMenu',{pageId: pageId, pageText: pageText})
       }
     },
     mounted() {
-
     }
   }
 </script>

@@ -8,7 +8,7 @@
               :color="i.color"
               @click="selectTab(key)"
               >
-        {{key}}. {{ i.currPage }} &nbsp;
+        {{key}}. {{ i.pageText }} &nbsp;
         <v-icon @click="closeTab(i.isSelect,key)" color="black" small>clear</v-icon>
       </v-chip>
       <v-chip label small @click="addTab()"><v-icon color="black">add_circle_outline</v-icon></v-chip>
@@ -18,14 +18,10 @@
 </template>
 
 <script>
-  import tab1 from '@/components/tab1'
-  import tab2 from '@/components/tab2'
-  import tab3 from '@/components/tab3'
-  import tab4 from '@/components/tab4'
 
   export default {
     name: 'tabBar',
-    components:{ tab1, tab2 ,tab3 ,tab4 },
+    components:{ },
     data () {
       return {
         msg: ''

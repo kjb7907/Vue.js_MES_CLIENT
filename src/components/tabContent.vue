@@ -1,9 +1,13 @@
 <template>
   <div>
-    <page1></page1>
-    <page2></page2>
-    <page3></page3>
-    <page4></page4>
+    <template>
+
+    </template>
+    <div v-if="pageId=='NewTab'">새 탭 입니다.</div>
+    <page1 v-if="pageId=='page1'"></page1>
+    <page2 v-if="pageId=='page2'"></page2>
+    <page3 v-if="pageId=='page3'"></page3>
+    <page4 v-if="pageId=='page4'"></page4>
   </div>
 </template>
 pages
@@ -21,6 +25,9 @@ pages
         msg: 'Welcome to Your Vue.js App'
       }
     },
+    props: [
+      'pageId'
+    ],
     computed:{
       tabs(){
         return this.$store.state.tabs;
