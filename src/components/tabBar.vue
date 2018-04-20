@@ -3,7 +3,6 @@
 
     <v-card>
       <v-chip v-for="(i, key, index) in tabs" :key="index"
-              v-if="i.isOnOff"
               label small
               :color="i.color"
               @click="selectTab(key)"

@@ -7,11 +7,14 @@
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'display3',
     data () {
       return {
         msg: '화면 3'
       }
+    },
+    destroyed(){
+      console.log('화면3 소멸')
     }
   }
 </script>

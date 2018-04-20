@@ -49,6 +49,8 @@ const mutations = {
 const actions= {
   addTab ({commit}) {
     commit('addTab');
+    commit('deselectTab', state.currTabIndex);
+    commit('selectTab', state.tabs.length-1);
   },
   selectTab ({commit, state}, index) {
     if (state.tabs[index] != undefined) {
