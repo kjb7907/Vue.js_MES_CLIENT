@@ -2,13 +2,6 @@ import * as types from '../mutation-types'
 
 const state = {
   tabs: [
-    {
-      isOnOff: true,
-      isSelect:true,
-      pageId: 'newTab',
-      pageText: '새 탭',
-      color:'amber'
-    }
   ],
   currTabIndex:0,
   tabCountMax:5
@@ -21,52 +14,51 @@ const mutations = {
   // },
   addTab (state) {
     state.tabs.push({
-      isOnOff: true,
-      isSelect:false,
+      isSelect:true,
       pageId: 'newTab',
       pageText: '새 탭',
-      color:''
+      color:'amber'
     })
   },
-  selectTab (state, index) {
+  selectTab (state, index) {              // 탭 선택
     state.tabs[index].isSelect=true;
     state.tabs[index].color='amber';
     state.currTabIndex=index;
   },
-  deselectTab (state, index) {
+  deselectTab (state, index) {            // 탭 선택해제
     state.tabs[index].isSelect=false;
     state.tabs[index].color='';
   },
-  closeTab (state,index) {
+  closeTab (state,index) {                // 탭 닫기
     state.tabs.splice(index,1)
   },
-  selectMenu (state, payload){
+  selectMenu (state, payload){            // 메뉴 선택
     state.tabs[state.currTabIndex].pageId = payload.pageId;
     state.tabs[state.currTabIndex].pageText = payload.pageText;
   }
 }
 
 const actions= {
-  addTab ({commit, state}) {
+  addTab ({commit, state}) {                      // 탭추가
     if(state.tabs.length < state.tabCountMax){
-      commit('addTab');
-      commit('deselectTab', state.currTabIndex);
-      commit('selectTab', state.tabs.length-1);
+      commit('addTab');                           // 새탭추가
+      commit('deselectTab', state.currTabIndex);  // 선택되있던 탭 선택해제
+      commit('selectTab', state.tabs.length-1);   // 새탭 선택
     }
   },
-  selectTab ({commit, state}, index) {
+  selectTab ({commit, state}, index) {            // 탭선택
     if (state.tabs[index] != undefined) {
-      commit('deselectTab', state.currTabIndex);
-      commit('selectTab', index);
+      commit('deselectTab', state.currTabIndex);  // 선택되있던 탭 선택해제
+      commit('selectTab', index);                 // 선택한탭 선택
     };
   },
-  closeTab ({commit}, index) {
-    commit('deselectTab', state.currTabIndex);
-    commit('selectTab', index-1);
-    commit('closeTab', index)
+  closeTab ({commit}, index) {                    // 탭 닫기
+    commit('deselectTab', state.currTabIndex);    // 선택되었던 탭 선택해제
+    commit('selectTab', index-1);                 // 닫을 탭 이전 인덱스 탭 선택
+    commit('closeTab', index)                     // 선택한 탭 닫기
   },
-  selectMenu ({commit}, payload) {
-    commit('selectMenu', payload)
+  selectMenu ({commit, state}, payload) {
+
   }
 }
 
