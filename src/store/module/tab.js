@@ -5,13 +5,13 @@ const state = {
     {
       isOnOff: true,
       isSelect:true,
-      pageId: 'NewTab',
+      pageId: 'newTab',
       pageText: '새 탭',
       color:'amber'
     }
   ],
   currTabIndex:0,
-  tabCountMax:4
+  tabCountMax:5
 }
 
 const mutations = {
@@ -23,7 +23,7 @@ const mutations = {
     state.tabs.push({
       isOnOff: true,
       isSelect:false,
-      pageId: 'NewTab',
+      pageId: 'newTab',
       pageText: '새 탭',
       color:''
     })
@@ -47,10 +47,12 @@ const mutations = {
 }
 
 const actions= {
-  addTab ({commit}) {
-    commit('addTab');
-    commit('deselectTab', state.currTabIndex);
-    commit('selectTab', state.tabs.length-1);
+  addTab ({commit, state}) {
+    if(state.tabs.length < state.tabCountMax){
+      commit('addTab');
+      commit('deselectTab', state.currTabIndex);
+      commit('selectTab', state.tabs.length-1);
+    }
   },
   selectTab ({commit, state}, index) {
     if (state.tabs[index] != undefined) {
