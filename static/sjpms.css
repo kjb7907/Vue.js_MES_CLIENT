@@ -1,0 +1,126 @@
+/*종합화면*/
+/*막대그래프*/
+.bargraph{padding:0px 20px;padding-bottom:20px;} .bargraph.con{padding:20px; border-bottom:1px solid #ddd;}
+.bargraph .bar{position:relative; padding-bottom:20px;} .bargraph .bar p{height:30px;} .bargraph .bg{background-color:#cbced3;}
+.bargraph p[class^="val"]{position:absolute; top:0; box-sizing:border-box; text-align:center;} .bargraph .val01{background-color:#3cb2d9;} .bargraph .val02{background-color:#817aae;} .bargraph .val03{background-color:#df7895;} .bargraph .val04{background-color:#39c3bc;}
+.bargraph p[class^="val"] strong{font-size:14px; color:#fff; line-height:30px;} .bargraph p[class^="val"] span{display:block; margin-top:3px; font-weight:600;}
+.bargraph .val01 span{color:#3cb2d9;} .bargraph .val02 span{color:#817aae;} .bargraph .val03 span{color:#df7895;} .bargraph .val04 span{color:#39c3bc;}
+.bargraph .per{position:relative; margin:10px 0; padding-top:8px; border-bottom:2px solid #abaeb3;} .bargraph .per span{position:absolute; top:0; bottom:-10px; border-right:1px dashed #ccc; color:#abaeb3;}
+.bargraph .per span b{position:absolute; top:-16px; left:-8px;}
+.bargraph .per span:first-child b{left:-1px;} .bargraph .per span:last-child b{left:auto; right:-2px;}
+/*게이지차트 (OEE통계 공통)*/
+.overall{position:relative; float:left; width:33.33%; padding:0 20px 20px; box-sizing:border-box; background-color:#eee; border-left:1px solid #ddd;} .overall:first-child{border-left:none;}
+.overall .gage{position:relative; top:0; left:0;} #gage1, #gage2, #gage3{position:relative; top:0; left:50%; margin-left:-100px; width:200px; height:160px;}
+.overall .gage span{position:absolute; top:10px; left:0; right:0; padding-top:10px; background-color:#eee; text-align:center; color:#555;} .overall .gage span strong{font-weight:900; color:#333;}
+.overall h3{position:absolute; top:20px; left:25%; width:50%; background-color:#eee; text-align:center; font-size:15px; color:#555;  z-index:2;}
+.chtvalue{margin-top:5px; border-radius:5px 5px 7px 7px; box-shadow:1px 1px 1px rgba(0,0,0, .1); }
+.chtvalue h4{position:relative; height:30px; line-height:30px; padding:0 15px; background-color:#b1b9c0; border-radius:5px 5px 0 0; font-size:13px; color:#fff;}
+.chtvalue h4 .btn{position:absolute; top:5px; right:10px; height:19px; line-height:17px; padding:1px 10px; background:#fff; border:none; font-size:11px; color:#666d74;}
+.valuebox{padding:2px 12px; background-color:#fff; background: linear-gradient(to bottom, #fff, #f5f5f5); border-radius:0 0 7px 7px; font-weight:600; font-size:13px; line-height:29px;}
+.valuebox dl{padding:0 3px;} .valuebox dl:after{clear:both; display:block; content:'';}.valuebox dl + dl{border-top:1px dashed #d7d7d7;}
+.valuebox dt, .valuebox dd{float:left; width:33.33%; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}  .valuebox dt{color:#555;} .valuebox dd{text-align:right; color:#ea472c;} .valuebox dd:last-child{color:#ea742c;}
+.valuebox.one dd{width:35%;} .valuebox.one dt{width:65%;}
+/*생산모니터링*/
+.gantt{position:relative; width:100%; border-top:1px solid #c4c4c4;} .title + .gantt{border-top:none;}
+.gantt .linearea{position:absolute; top:0; bottom:18px; width:200px; padding-top:49px; background-color:#f5f5f5; border-right:1px solid #c4c4c4; z-index:10;}
+.gantt .line{height:135px; border-top:1px solid #c4c4c4;} .gantt .line:after, .gantt .line dl:after{display:block; clear:both; content:'';}
+.gantt .line .info{float:left; margin-left:20px; width:112px;} .gantt .line > ul{float:right; margin:10px 8px;}
+.gantt .line .info p{text-align:center;} .gantt .line .info h3{margin-top:10px; text-align:center; font-size:16px; line-height:1.3em;}
+.gantt .line .info .product{margin:2px 0 5px; font-size:13px; color:#666;} .gantt .line .info .product.part{margin-bottom:15px; color:#ea472c;}
+.gantt .line .info dt{float:left; color:#666;} .gantt .line .info dd{float:right; color:#ea472c;} .gantt .line .info dl{line-height:17px; letter-spacing:-0.5px;}
+.gantt .line .info .oper{margin:5px auto 0; width:80px; line-height:20px; background-color:#32a3de; border-radius:3px; color:#fff;} .gantt .line .info .oper.part{background-color:#ea472c;}
+.gantt .line > ul li{width:51px; line-height:36px; background-color:#f2803b; border-radius:3px; text-align:center; font-size:13px; color:#fff;} .gantt .line > ul li + li{margin-top:3px;}
+.gantt .line > ul li:first-child{background-color:#b4c6c8;} .gantt .line > ul li:last-child{background-color:#76c1d4;}
+.gantt .day:after, .gantt .time:after, .gantt .mchart .bg:after{display:block; clear:both; content:'';}
+.gantt .chartwrap{padding:0 0 0 200px; max-width:100%; min-height:100px; background-color:#fff; overflow-x:auto;}
+.gantt .day li, .gantt .time li{float:left;} .gantt .day li{line-height:24px; background-color:#f5f5f5; border-left:1px solid #c4c4c4; text-align:center;}
+.gantt .day > .active, .gantt .time .active{background-color:#ddd; color:#333; font-weight:600;}
+.gantt .time li{width:99px; border-top:1px solid #c4c4c4; border-left:1px solid #c4c4c4; color:#555;} .gantt .time li:first-child{border-left:none;}
+.gantt .mchart{position:relative; border-top:1px solid #c4c4c4;}
+.gantt .mchart .bg li{float:left; width:99px; height:135px; border-left:1px dashed #ddd;} .gantt .mchart .bg li:nth-child(24n+1){border-left:1px solid #c4c4c4;}
+.gantt .mchart .plan{position:absolute; top:20px;}
+.gantt .mchart .plan p{position:absolute; top:-8px; margin:0 4px; height:27px; background-color:#d7dedf; border:1px solid #949898; border-radius:2px; text-align:center;}
+.gantt .mchart .plan p span{display:inline-block; margin-top:3px; line-height:20px; color:#403c3d;white-space:nowrap;font-size:11px;}
+/*.gantt .mchart .figure{position:absolute; top:58px; left:5px;}
+.gantt .mchart .figure p{position:absolute; top:0; margin:0 3px; height:20px; background-color:#f7bc69; border:1px solid #eb6e23; border-radius:2px; overflow:hidden;}
+.gantt .mchart .figure p.fin{background-color:#f2803b;} .gantt .mchart .figure p em{position:absolute; top:0; bottom:0; right:0; background-color:#f35c11;}
+.gantt .mchart .figure p em.fin{left:0; right:auto; background-color:#f2803b;}*/
+/*.gantt .mchart .figure span{position:absolute; top:0;  display:block;  line-height: 19px; border-bottom:1px solid #f6a675; font-size:13px; color:#f2803b; font-weight:600;}*/
+.gantt .mchart .figure span i{position:relative; top:-2px; margin-right:3px; width:10px; height:8px; background-color: #f24e46;}
+.gantt .mchart .figure span i:after{position:absolute; top:8px; left:0; border-style:solid; border-width:8px; border-color: #f2434b transparent transparent transparent; content:'';}
+
+.gantt .mchart .figure{position:absolute; top:60px;}
+.gantt .mchart .figure p{position:absolute; top:-9px; margin:0 0px; height:27px; background-color:#f7bc69; border:1px solid #ffffff; border-radius:2px; text-align:center;}
+.gantt .mchart .figure p span{display:inline-block; margin-top:3px; line-height:20px; color:#ffffff;white-space:nowrap;font-size:11px;}
+
+.gantt .mchart .figure p.fin{background-color:#f2803b;}
+.gantt .mchart .figure p.yesterday{background:linear-gradient(#f2803b 50%, #c4c4c4 50%);background-size:100% 44px;}
+.gantt .mchart .figure p.fin span{font-weight:bold;color:white;}
+.gantt .mchart .figure p.yesterday span{font-weight:bold;color:white;}
+
+.gantt .mchart .present{position:absolute; top:113px; left:2px;}
+.gantt .mchart .present p{position:absolute; top:-24px; height:27px; line-height:20px; background-color:#76c1d4; border:1px solid #3ca7c2; border-radius:2px;}
+.gantt .mchart .present p.error{background-color:#f9b9b9; border-color:#f79b9b;}
+.gantt .mchart .present p.orange{background-color: rgb(252, 210, 154); border-color: #f9a622;}
+
+/*텍스트 관련 추가 2017-10*/
+.gantt .mchart .present p > b{margin:0 3px; white-space:nowrap; font-weight:300;}
+.gantt .mchart .present p > em{position:absolute; top:-9999px; left:-9999px; width:0; height:0; background-color:#3ca7c2; border-radius:3px; color:#fff;}
+.gantt .mchart .present p:hover > em{top:-50px; left:-5px; display:inline-block; width:auto; height:46px; line-height:22px; padding:0 7px; font-size:11px; white-space:nowrap;}
+.gantt .mchart .present p > em:after{position:absolute; bottom:-8px; left:20px; border-width:4px; border-style:solid; border-color:#3ca7c2 transparent transparent transparent; content:'';}
+.gantt .mchart .present p.error > em{background-color:#de6161;} .gantt .mchart .present p.error > em:after{border-top-color:#de6161;}
+.gantt .mchart .present p.orange > em{background-color:#de6161;} .gantt .mchart .present p.orange > em:after{border-top-color:#de6161;}
+
+/*텍스트 관련 추가 2017-10*/
+.gantt .mchart .plan p > b{margin:0 3px; white-space:nowrap; font-weight:300;}
+.gantt .mchart .plan p > em{position:absolute; top:-9999px; left:-9999px; width:0; height:0; background-color:#8c999a; border-radius:3px; color:#fff;}
+.gantt .mchart .plan p:hover > em{top:-51px; left:-5px; display:inline-block; width:auto; height:46px; line-height:22px; padding:0 7px; font-size:11px; white-space:nowrap;}
+.gantt .mchart .plan p > em:after{position:absolute; bottom:-8px; left:20px; border-width:4px; border-style:solid; border-color:#8c999a transparent transparent transparent; content:'';}
+.gantt .mchart .plan p.error > em{background-color:#de6161;} .gantt .mchart .plan p.error > em:after{border-top-color:#de6161;}
+
+/*텍스트 관련 추가 2017-10*/
+.gantt .mchart .figure p > b{margin:0 3px; white-space:nowrap; font-weight:300;}
+.gantt .mchart .figure p > em{position:absolute; top:-9999px; left:-9999px; width:0; height:0; background-color: #f2803b; border-radius:3px; color:#fff;}
+.gantt .mchart .figure p:hover > em{top:-92px; left:-5px; display:inline-block; width:auto; height:85px; line-height:22px; padding:0 7px; font-size:11px; white-space:nowrap;}
+.gantt .mchart .figure p > em:after{position:absolute; bottom:-8px; left:20px; border-width:4px; border-style:solid; border-color: #f2803b transparent transparent transparent; content:'';}
+.gantt .mchart .figure p.error > em{background-color:#de6161;} .gantt .mchart .figure p.error > em:after{border-top-color:#de6161;}
+
+/*검색 라인태그추가*/
+.addline{float:left; display:inline-block; margin-left:5px; padding:0 9px; line-height:26px; background-color:#65C7DB; border-radius:3px; color:#fff;} .addline .fa{margin:0 0 0 5px; cursor:pointer;}
+
+/*데이터베이스 현황 (상단부분) (fems동일)*/
+.state{position:relative; top:0; left:0; height:150px; background-color:#eee; border-bottom:1px solid #c4c4c4; box-shadow:inset 0 0 4px rgba(0,0,0,0.05);}
+.state div{display:inline-block; vertical-align:middle;}
+.state .icon{display:inline-block; position:absolute; top:0; bottom:0; left:0; width:200px; background-color:#f5f5f5; border-right:1px solid #fff; box-shadow:3px 0 1px rgba(0,0,0,0.05); text-align:center;}
+.state .icon i{margin-top:40px; font-size:5.5em; color:#888; text-shadow:1px 1px 3px rgba(0,0,0,.1);}
+.state .icon p{margin-top:10px; font-weight:700;}
+.state .chart{display:inline-block; padding-left:200px;}
+.state .chtvalue{margin-left:20px; border-radius:0; box-shadow:none;}
+.state .chtvalue .time{text-align:right; color:#666;}
+.state .valuebox{padding:3px 15px; margin-top:7px; background-color:#fff; background: linear-gradient(to bottom, #fff, #f5f5f5); background: -webkit-linear-gradient(to bottom, #fff, #f5f5f5); border-radius:7px; box-shadow:1px 1px 1px rgba(0,0,0, .2); font-weight:700; line-height:40px;}
+.state .valuebox dl{clear:both; display:block; content:'';} .state .valuebox dl + dl{border-top:1px dashed #d7d7d7;}
+.state .valuebox dt, .state .valuebox dd{width:auto;}
+.state .valuebox dt{float:left; font-size:14px; color:#666;} .state .valuebox dd{float:right; margin-left:50px; text-align:right; font-size:18px; color:#444;}
+
+/*그래프 관련 요소*/
+.legend{margin-bottom:15px; text-align:right; color:#666;}
+.legend span:before{display:inline-block; margin:0 5px 0 15px; width:14px; height:14px; content:''; vertical-align:middle; box-shadow:inset 1px 1px 1px rgba(0,0,0,.1),  1px 1px 1px rgba(255,255,255,1); }
+.legend .run:before{background-color:#78d441;} .legend .run.pause:before{background-color:#777;} .legend .run.stop:before{background-color:#ee5365;}
+
+/*리포트*/
+.timerpt dl{position:relative; top:0; left:0; margin:10px 0; font-size:16px; font-weight:600; line-height:26px;}  .timerpt + .table{margin-top:15px;}
+.timerpt dt, .timerpt dd{padding:5px 20px; box-sizing:border-box; border-radius:3px; box-shadow:1px 1px 1px rgba(0,0,0,.15);}
+.timerpt dt {position:absolute; top:0; bottom:0; left:0; width:29%; background-color:#a5bfce; text-align:center; color:#fff;} .timerpt dd{margin-left:30%; background-color:#f5f5f5; min-height:26px;}
+.timerpt dl.over1 dt{background:#62a8d0;} .timerpt dl.over1 dd{color:#62a8d0;} .timerpt dl.over2 dt{background:#df7895;} .timerpt dl.over2 dd{color:#df7895;}
+.raterpt dl{position:relative; top:0; left:0; float:left; margin:10px 0; width:47%; font-size:16px; font-weight:600; line-height:26px; box-shadow:1px 1px 1px rgba(0,0,0,.15);}
+.raterpt:after{display:block; clear:both; content:"";} .raterpt dl:nth-child(2n){margin-left:6%;} .raterpt dt, .raterpt dd{padding:5px 20px; border:1px solid #37ccd9; box-sizing:border-box;}
+.raterpt dt {position:absolute; top:0; bottom:0; left:0; width:35%; background-color:#37ccd9; border-top-left-radius:3px; border-bottom-left-radius:3px; text-align:center; color:#fff;}
+.raterpt dd{padding-left:38%; background-color:#fff; min-height:26px; border-top-right-radius:3px; border-bottom-right-radius:3px; color:#f56235;}
+.modal .timerpt dl, .modal .raterpt dl{margin:5px 0; font-size:15px;} .modal .raterpt dl{width:49%;} .modal .raterpt dl:nth-child(2n){margin-left:2%;}
+
+/*테이블 추가*/
+.table.inp td{padding:3px 5px 5px;} .table .cancel td{background-color:#ddd; color:#999;}
+.table.inp input[type="text"]{width:100%; padding:0 5px; box-sizing:border-box; background-color:transparent; border:none; box-shadow:none; text-align:center; color:inherit;}
+
+.table.em th{background-color:#d5e7ec; background-image: linear-gradient(to bottom, #deecf0, #c4dfe6); background-image: -webkit-linear-gradient(top, #deecf0, #c4dfe6); border-color:#8ec5d4;}
+.table.em table{border-color:#8ec5d4;} .table.em td{font-size:1.3em; font-weight:600; line-height:1.5em; color:#2a4e5d;}

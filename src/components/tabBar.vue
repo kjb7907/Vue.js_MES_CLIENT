@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <v-card>
+    <v-card style="margin-bottom: 5px;">
       <v-chip v-for="(i, key, index) in tabs" v-if="i.isOnOff" :key="index"
               label small
               :color="i.color"
