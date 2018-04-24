@@ -2,6 +2,12 @@ import * as types from '../mutation-types'
 
 const state = {
   tabs: [
+    {
+      isSelect:true,
+      pageId: 'page1',
+      pageText: '화면 1',
+      color:'amber'
+    }
   ],
   currTabIndex:0,
   tabCountMax:5
@@ -12,12 +18,12 @@ const mutations = {
   //   state.device.isMobile = device === 'mobile'
   //   state.device.isTablet = device === 'tablet'
   // },
-  addTab (state) {
+  addTab (state, payload) {
     state.tabs.push({
       isSelect:true,
       pageId: 'newTab',
       pageText: '새 탭',
-      color:'amber'
+      color:''
     })
   },
   selectTab (state, index) {              // 탭 선택
@@ -57,8 +63,26 @@ const actions= {
     commit('selectTab', index-1);                 // 닫을 탭 이전 인덱스 탭 선택
     commit('closeTab', index)                     // 선택한 탭 닫기
   },
-  selectMenu ({commit, state}, payload) {
+  selectMenu ({commit, dispatch, state}, payload) {
 
+    var isNewTab = true;                          // 새 탭 열기 여부
+    var prevIndex;                                // 선택한 메뉴가 열려있던 인덱스
+
+    for(var i=0 ; i<state.tabs.length ; i++){     // 선택한 메뉴의 탭이 기존에 열려있는지 검사해 새 탭 여부 검사
+      if(state.tabs[i].pageId == payload.pageId){
+        isNewTab = false;
+        prevIndex = i;
+        break;
+      }
+    }
+
+    if(isNewTab){                                 // 선택한 메뉴의 탭이 기존에 열려있지 않다면 새탭을 열기
+      dispatch('addTab');
+      commit('selectMenu',payload);
+    }
+    else{                                         // 선택한 메뉴의 탭이 기존에 열려있다면 기존의 탭으로 포커스 이동
+      dispatch('selectTab',prevIndex);
+    }
   }
 }
 
