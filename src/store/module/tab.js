@@ -3,6 +3,7 @@ import * as types from '../mutation-types'
 const state = {
   tabs: [
     {
+      isOnOff: true,
       isSelect:true,
       pageId: 'page1',
       pageText: '화면 1',
@@ -20,6 +21,7 @@ const mutations = {
   // },
   addTab (state, payload) {
     state.tabs.push({
+      isOnOff: true,
       isSelect:true,
       pageId: 'newTab',
       pageText: '새 탭',
@@ -36,12 +38,21 @@ const mutations = {
     state.tabs[index].color='';
   },
   closeTab (state,index) {                // 탭 닫기
-    state.tabs.splice(index,1)
+    // state.tabs.splice(index,1)
+    state.tabs[index].isOnOff=false;
+    state.tabs[index].pageId='';
+    state.tabs[index].pageText='';
   },
   selectMenu (state, payload){            // 메뉴 선택
     state.tabs[state.currTabIndex].pageId = payload.pageId;
     state.tabs[state.currTabIndex].pageText = payload.pageText;
-  }
+  },
+  recycleTab (state, index) {             // 닫았던 탭 재사용
+    state.tabs[index].isOnOff=true;
+    state.tabs[index].isSelect=true;
+    state.tabs[index].color='amber';
+    state.currTabIndex=index;
+  },
 }
 
 const actions= {
@@ -58,31 +69,56 @@ const actions= {
       commit('selectTab', index);                 // 선택한탭 선택
     };
   },
-  closeTab ({commit}, index) {                    // 탭 닫기
+  closeTab ({commit, state}, index) {             // 탭 닫기
     commit('deselectTab', state.currTabIndex);    // 선택되었던 탭 선택해제
-    commit('selectTab', index-1);                 // 닫을 탭 이전 인덱스 탭 선택
+
+    if(state.tabs.length>1){                      // 탭이 닫히고 나서 다른탭을 선택하기 위한 조건
+      if(index == 0){                             // 첫번째 탭이 닫히는경우 두번째 탭 선택
+        commit('selectTab', index+1);             // 두번째 탭 선택
+      }
+      else {                                      // 첫번째 탭이 아닌 다른 탭이 닫히는경우
+        commit('selectTab', index-1);             // 닫을 탭 이전 인덱스 탭 선택
+      }
+
+    }
+
     commit('closeTab', index)                     // 선택한 탭 닫기
   },
   selectMenu ({commit, dispatch, state}, payload) {
 
-    var isNewTab = true;                          // 새 탭 열기 여부
-    var prevIndex;                                // 선택한 메뉴가 열려있던 인덱스
+    var isExistTab = false;                       // 이미 존재하는 탭인지 여부
+    var prevIndex;                                // 존재하는 메뉴의 탭 인덱스
+    var isRecycleTab = false;                     // 재사용 가능한 탭의 여부
+    var rcIndex;                                  // 재사용 할 탭 인덱스
 
-    for(var i=0 ; i<state.tabs.length ; i++){     // 선택한 메뉴의 탭이 기존에 열려있는지 검사해 새 탭 여부 검사
-      if(state.tabs[i].pageId == payload.pageId){
-        isNewTab = false;
+    for(var i=0 ; i<state.tabs.length ; i++){
+      if(state.tabs[i].pageId == payload.pageId){ // 선택한 메뉴의 탭이 기존에 열려있는지 검사해 새 탭 여부 검사
+        isExistTab = true;
         prevIndex = i;
         break;
       }
+      if(state.tabs[i].isOnOff == false){
+        isRecycleTab = true;
+        rcIndex = i;
+      }
     }
 
-    if(isNewTab){                                 // 선택한 메뉴의 탭이 기존에 열려있지 않다면 새탭을 열기
+    if(isExistTab){                               // 이미 존재하는 탭일경우 그 탭으로 포커스 이동
+      console.log('포커스 이동');
+      dispatch('selectTab',prevIndex);
+    }
+    else if(isRecycleTab){                        // 재사용 가능한 탭이 있는경우 그 탭에서 메뉴 실행
+      console.log('탭 재사용');
+      commit('deselectTab', state.currTabIndex);  // 선택되있던 탭 선택해제
+      commit('recycleTab', rcIndex);
+      commit('selectMenu',payload);
+    }
+    else {                                        // 중복된 탭도 없고 재사용 가능한 탭도 없을 경우 새로운 탭에 메뉴 실행
+      console.log('새 탭 생성');
       dispatch('addTab');
       commit('selectMenu',payload);
     }
-    else{                                         // 선택한 메뉴의 탭이 기존에 열려있다면 기존의 탭으로 포커스 이동
-      dispatch('selectTab',prevIndex);
-    }
+
   }
 }
 
