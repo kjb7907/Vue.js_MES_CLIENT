@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/xrange.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div style="text-align: right;">
+    <button id="zoomIn">확대</button>
+    <button id="zoomOut">축소</button>
+</div>
+
+<div style="width:100%;">
+    <div id="container"></div>
+</div>
+</body>
+</html>
+
+<script>
+
+</script>
+
+<script>
+
+    var chart
+    var _min = Date.UTC(2017, 10, 21, 12,00);
+    var _max = Date.UTC(2017, 10, 22, 12,00);
+    var tickInterval = 3600 * 1000;
+
+    $(document).ready(function(){
+
+        $('#zoomIn').click(function () {
+            _min = _min + 3600 * 1000;
+            _max = _max - 3600 * 1000;
+            chart.xAxis[0].setExtremes(_min,_max);
+        });
+
+        $('#zoomOut').click(function () {
+            _min = _min - 3600 * 1000;
+            _max = _max + 3600 * 1000;
+            chart.xAxis[0].setExtremes(_min,_max);
+        });
+
+        drawChart()
+    });
+
+    function drawChart() {
+
+        Highcharts.setOptions({
+            global: {
+                useUTC:false
+            },
+            lang: {
+                weekdays: ['일', '월', '화', '수', '목', '금', '토']
+            }
+        });
+
+        chart = Highcharts.chart('container', {
+            color: [
+                '#25CCE0', '#FD644B' , '#FEBA4A'
+            ],
+            chart: {
+                type: 'xrange',
+                zoomType:'x'
+            },
+            scrollbar: {
+                enabled: true
+            },
+            title: {
+                text: '가동현황 차트'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickInterval: tickInterval,
+                min: _min,
+                max: _max,
+                labels: {
+                    formatter: function() {
+                        return Highcharts.dateFormat('%m-%d(%a)%H시', this.value);
+                    }
+                }
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                categories: ['1호기', '2호기', '3호기'],
+                reversed: true
+            },
+            tooltip: {
+                headerFormat: ' ',
+                formatter: function() {
+                    return '공정명: '+ this.series.name +'<br/>'+
+                        Highcharts.dateFormat('%Y-%m-%d', this.x) +'<br/>'+
+                        '시간: ' + this.point.time + '<br/>' +
+                        '정지사유: ' + this.point.stopReason
+
+                }
+            },
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function () {
+                                alert(this.x + '  ' + this.x2 + '  ' + tickInterval)
+                            }
+                        }
+                    }
+                }
+            },
+            series:
+            [
+                {
+                    name: '1호기',
+                     pointPadding: 0,
+                     groupPadding: 0,
+                    borderColor: 'white',
+                    pointWidth: 30,
+                    data:
+                    [
+                        {
+                            x: Date.UTC(2017, 10, 21, 12,00),
+                            x2: Date.UTC(2017, 10, 21, 15,00),
+                            y: 0,
+                            color: '#25CCE0',
+                            state: '가동',
+                            time: '3시간',
+                            stopReason: '가동정비'
+                            //                    partialFill: 0,
+                        },
+                        {
+                            x: Date.UTC(2017, 10, 21, 15,00),
+                            x2: Date.UTC(2017, 10, 21, 16,00),
+                            y: 0,
+                            color:'#FEBA4A',
+                            state: '정지',
+                            time: '1시간',
+                            stopReason: '가동정비'
+                        },
+                        {
+                            x: Date.UTC(2017, 10, 21, 16,00),
+                            x2: Date.UTC(2017, 10, 21, 20,00),
+                            y: 0,
+                            color: '#25CCE0',
+                            state: '가동',
+                            time: '4시간',
+                            stopReason: '가동정비'
+                        },
+                        {
+                            x: Date.UTC(2017, 10, 21, 20,00),
+                            x2: Date.UTC(2017, 10, 21, 20,30),
+                            y: 0,
+                            color: '#FD644B',
+                            state: '정지(미등록)',
+                            time: '1시간',
+                            stopReason: ''
+                        }
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        padding:0,
+                        allowOverlap: true,
+                        formatter: function(){
+                            return this.point.state + ' ' + this.point.time
+                        }
+                    }
+                }
+                ,
+                {
+                    name: '2호기',
+                    pointPadding: 0,
+                    groupPadding: 0,
+                    borderColor: 'white',
+                    pointWidth: 30,
+                    data:
+                        [
+                            {
+                                x: Date.UTC(2017, 10, 21, 12,00),
+                                x2: Date.UTC(2017, 10, 21, 15,00),
+                                y: 1,
+                                color: '#25CCE0',
+                                state: '가동',
+                                time: '3시간',
+                                stopReason: '가동정비'
+                                //                    partialFill: 0,
+                            },
+                            {
+                                x: Date.UTC(2017, 10, 21, 15,00),
+                                x2: Date.UTC(2017, 10, 21, 16,00),
+                                y: 1,
+                                color:'#FEBA4A',
+                                state: '정지',
+                                time: '1시간',
+                                stopReason: '가동정비'
+                            },
+                            {
+                                x: Date.UTC(2017, 10, 21, 16,00),
+                                x2: Date.UTC(2017, 10, 21, 20,00),
+                                y: 1,
+                                color: '#25CCE0',
+                                state: '가동',
+                                time: '4시간',
+                                stopReason: '가동정비'
+                            },
+                            {
+                                x: Date.UTC(2017, 10, 21, 20,00),
+                                x2: Date.UTC(2017, 10, 21, 20,30),
+                                y: 1,
+                                color: '#FD644B',
+                                state: '정지(미등록)',
+                                time: '1시간',
+                                stopReason: ''
+                            }
+                        ],
+                    dataLabels: {
+                        enabled: true,
+                        padding:0,
+                        allowOverlap: true,
+                        formatter: function(){
+                            return this.point.state + ' ' + this.point.time
+                        }
+                    }
+                }
+            ]
+
+        });
+    }
+</script>
