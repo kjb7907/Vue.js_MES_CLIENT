@@ -6,7 +6,7 @@ const state = {
       isOnOff: true,
       isSelect:true,
       pageId: 'page1',
-      pageText: '화면 1',
+      pageText: '종합화면',
       color:'amber'
     }
   ],
@@ -104,17 +104,14 @@ const actions= {
     }
 
     if(isExistTab){                               // 이미 존재하는 탭일경우 그 탭으로 포커스 이동
-      console.log('포커스 이동');
       dispatch('selectTab',prevIndex);
     }
     else if(isRecycleTab){                        // 재사용 가능한 탭이 있는경우 그 탭에서 메뉴 실행
-      console.log('탭 재사용');
       commit('deselectTab', state.currTabIndex);  // 선택되있던 탭 선택해제
       commit('recycleTab', rcIndex);
       commit('selectMenu',payload);
     }
     else {                                        // 중복된 탭도 없고 재사용 가능한 탭도 없을 경우 새로운 탭에 메뉴 실행
-      console.log('새 탭 생성');
       dispatch('addTab');
       commit('selectMenu',payload);
     }

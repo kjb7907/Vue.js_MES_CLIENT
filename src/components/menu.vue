@@ -56,7 +56,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar app absolute clipped-left flat height="50" style="border-bottom: solid lightgray 1px; background-color: white">
+    <v-toolbar app clipped-left flat fixed height="50" style="border-bottom: solid lightgray 1px; background-color: white">
       <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
 
       <span class="title ml-3 mr-5">DX-<span class="text">MES</span></span>
@@ -106,10 +106,10 @@
       active: null,
       drawer: null,
       items: [
-        { icon: 'lightbulb_outline', text: '화면1', pageId: 'page1' },
-        { icon: 'lightbulb_outline', text: '화면2', pageId: 'page2' },
-        { icon: 'lightbulb_outline', text: '화면3', pageId: 'page3' },
-        { icon: 'lightbulb_outline', text: '화면4', pageId: 'page4' },
+        { icon: 'lightbulb_outline', text: '종합화면', pageId: 'page1' },
+        { icon: 'lightbulb_outline', text: '시간가동률 리포트', pageId: 'page2' },
+        { icon: 'lightbulb_outline', text: '성능가동률 리포트', pageId: 'page3' },
+        { icon: 'lightbulb_outline', text: '양품률 리포트', pageId: 'page4' },
 
 /*
         { icon: 'lightbulb_outline', text: 'Notes' },

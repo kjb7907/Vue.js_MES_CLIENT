@@ -7,7 +7,7 @@
               :color="i.color"
               @click="selectTab(key)"
               >
-        {{key}}. {{ i.pageText }} &nbsp;
+        {{ i.pageText }} &nbsp;
         <v-icon @click="closeTab(i.isSelect,key)" color="black" small>clear</v-icon>
       </v-chip>
       <!--<v-chip label small @click="addTab()"><v-icon color="black">add_circle_outline</v-icon></v-chip>-->
