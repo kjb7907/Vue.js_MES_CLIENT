@@ -30,7 +30,7 @@ const mutations = {
   },
   selectTab (state, index) {              // 탭 선택
     state.tabs[index].isSelect=true;
-    state.tabs[index].color='amber';
+    state.tabs[index].color='amber lighten-1';
     state.currTabIndex=index;
   },
   deselectTab (state, index) {            // 탭 선택해제
@@ -50,7 +50,7 @@ const mutations = {
   recycleTab (state, index) {             // 닫았던 탭 재사용
     state.tabs[index].isOnOff=true;
     state.tabs[index].isSelect=true;
-    state.tabs[index].color='amber';
+    state.tabs[index].color='amber lighten-1';
     state.currTabIndex=index;
   },
 }

@@ -128,6 +128,9 @@
 
 
 /* vue-cli 추가 */
+h1, h2 {
+  font-weight: 400;
+}
 ul, ol {
   list-style: none;
 }

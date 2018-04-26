@@ -37,14 +37,14 @@
     <v-layout row wrap style="margin-top: 3px;">
       <v-flex xs12>
         <div class="splitwrap btm">
-          <div class="overall" style="min-height:308px; width: 33%;">
+          <div class="overall" style="min-height:308px; width: 34%;">
             <h3>시간가동률</h3>
             <div class="gage">
               <div id="gauge1"></div>
               <span>당일 : <strong>20%</strong></span>
             </div>
             <div class="chtvalue">
-              <h4>Reason for Non-Operation <a href="/muRepoAvailability" class="btn"><i class="fa fa-file-o"></i> 상세보기</a></h4>
+              <h4>Reason for Non-Operation <v-btn style="margin:0px;">상세보기</v-btn></h4>
               <div class="valuebox" style="min-height:89px;">
                 <template>
                   <dl><dt>aa</dt><dd>aa times</dd><dd>aa minutes</dd></dl>
@@ -62,7 +62,7 @@
               <span>전일 : <strong>85%</strong></span>
             </div>
             <div class="chtvalue">
-              <h4>Reason for Performance<a href="/muRepoPerformance" class="btn"><i class="fa fa-file-o"></i> 상세보기</a></h4>
+              <h4>Reason for Performance<v-btn style="margin:0px;">상세보기</v-btn></h4>
               <div class="valuebox" style="min-height:89px;">
                 <template>
                   <dl><dt>aa</dt><dd>aa</dd><dd>aa</dd></dl>
@@ -80,7 +80,7 @@
               <span>전월 : <strong>55%</strong></span>
             </div>
             <div class="chtvalue">
-              <h4>Low Quality Rate Products<a href="/muRepoQuality" class="btn"><i class="fa fa-file-o"></i> 상세보기</a></h4>
+              <h4>Low Quality Rate Products<v-btn style="margin:0px;">상세보기</v-btn></h4>
               <div class="valuebox" style="min-height:89px;">
                 <template>
                   <dl><dt>aa</dt><dd>aa %</dd><dd>aa kg</dd></dl>

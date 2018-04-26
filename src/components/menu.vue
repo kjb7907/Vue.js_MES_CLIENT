@@ -42,11 +42,9 @@
             v-else
             @click="selectMenu(item.pageId,item.text)"
           >
-            <v-list-tile-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>
+              <v-list-tile-title style="font-size:12px;">
+                <v-icon>{{ item.icon }}</v-icon>
                 {{ item.text }}
               </v-list-tile-title>
             </v-list-tile-content>
@@ -87,6 +85,7 @@
     <v-content>
 
       <tab-bar></tab-bar>
+      <div style="height: 34px;"></div>
       <tab-content v-for="(i, key, index) in tabs" :key="index" v-show="i.isSelect" :pageId="i.pageId"></tab-content>
 
     </v-content>
@@ -106,10 +105,10 @@
       active: null,
       drawer: null,
       items: [
-        { icon: 'lightbulb_outline', text: '종합화면', pageId: 'page1' },
-        { icon: 'lightbulb_outline', text: '시간가동률 리포트', pageId: 'page2' },
-        { icon: 'lightbulb_outline', text: '성능가동률 리포트', pageId: 'page3' },
-        { icon: 'lightbulb_outline', text: '양품률 리포트', pageId: 'page4' },
+        { icon: 'insert_chart', text: '종합화면', pageId: 'page1' },
+        { icon: 'access_time', text: '시간가동률 리포트', pageId: 'page2' },
+        { icon: 'fitness_center', text: '성능가동률 리포트', pageId: 'page3' },
+        { icon: 'pie_chart', text: '양품률 리포트', pageId: 'page4' },
 
 /*
         { icon: 'lightbulb_outline', text: 'Notes' },
