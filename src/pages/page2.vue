@@ -6,12 +6,39 @@
         <v-card>
           <div style="height: 90px; width: 100%; padding: 10px;">
             <h2>시간가동률 리포트</h2>
-            <v-btn small depressed color="amber lighten-1"style="margin: 10px 0px 0px 0px"><v-icon small>local_printshop</v-icon>&nbsp;리포트 출력</v-btn>
+            <div style="display: inline-block;">
+              <v-menu
+                ref="menu2"
+                lazy
+                :close-on-content-click="false"
+                v-model="menu2"
+                transition="scale-transition"
+                offset-y
+                full-width
+                :nudge-right="40"
+                min-width="100px"
+                :return-value.sync="date"
+              >
+                <v-text-field
+                  slot="activator"
+                  label=""
+                  v-model="date"
+                  prepend-icon="event"
+                  readonly
+                  style="width:130px;"
+                ></v-text-field>
+                <v-date-picker v-model="date" @input="$refs.menu2.save(date)"></v-date-picker>
+
+              </v-menu>
+            </div>
+            <div style="display: inline-block; float:right;">
+              <v-btn small depressed color="amber lighten-1"style="margin: 10px 0px 0px 0px"><v-icon small>local_printshop</v-icon>&nbsp;리포트 출력</v-btn>
+            </div>
           </div>
         </v-card>
       </v-flex>
     </v-layout>
-    
+
     <v-layout row wrap style="margin-top: 1px;">
       <v-flex xs12>
         <v-card color="grey lighten-3">
@@ -94,6 +121,8 @@
     name: 'display2',
     data () {
       return {
+        date:'',
+        menu2:'',
         headers: [
           {
             text: '설비명',
