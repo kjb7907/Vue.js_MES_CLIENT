@@ -3,27 +3,16 @@
 
     <v-layout row wrap style="margin-top: 3px;">
       <v-flex xs12>
-        <v-card color="grey lighten-4">
+        <v-card>
           <div style="height: 90px; width: 100%; padding: 10px;">
-            <div style="background-color: red ; width:60px; height:3px; margin-left: 3px;"></div>
             <h2>시간가동률 리포트</h2>
             <v-btn small depressed color="amber lighten-1"style="margin: 10px 0px 0px 0px"><v-icon small>local_printshop</v-icon>&nbsp;리포트 출력</v-btn>
           </div>
         </v-card>
       </v-flex>
     </v-layout>
-
-    <v-layout row wrap style="margin-top: 3px;">
-      <v-flex xs12>
-        <v-card color="grey lighten-5">
-          <div style="height: 60px; width: 100%; padding: 20px 10px 20px 10px;">
-            조회
-          </div>
-        </v-card>
-      </v-flex>
-    </v-layout>
-
-    <v-layout row wrap style="margin-top: 3px;">
+    
+    <v-layout row wrap style="margin-top: 1px;">
       <v-flex xs12>
         <v-card color="grey lighten-3">
           <div style="height: 30px; width: 100%; padding: 5px 10px 5px 10px;">
@@ -35,15 +24,52 @@
 
     <v-layout row wrap style="margin-top: 3px;">
       <v-flex xs12 color="grey lighten-4">
-        <div style="height: 700px; width: 100%; padding: 5px 20px 5px 20px;">
+        <div style="width: 100%; padding: 5px 20px 5px 20px;">
+          <h2 style="margin-bottom: 10px;"><v-icon>build</v-icon>펠렛1호기</h2>
+          <v-card dark color="cyan" style="display: inline-block; width:15%;height: 40px;text-align: center; padding: 10px;"><h3>예방정비</h3></v-card>
+          <v-card style="display: inline-block; width:35%; height: 40px;padding: 10px;"><h3>asdasd</h3></v-card>
 
-          
+          <v-card dark color="cyan" style="display: inline-block; width:15%;height: 40px;text-align: center; padding: 10px;"><h3>다운타임</h3></v-card>
+          <v-card style="display: inline-block; width:34.1%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
 
+          <div style="margin-top:10px;">
+            <v-card dark color="blue-grey lighten-2" style="display: inline-block; width:25%;height: 40px;text-align: center;padding: 10px;"><h3>총조업시간</h3></v-card>
+            <v-card style="display: inline-block; width:74.5%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
+          </div>
+
+          <div style="margin-top:10px;">
+            <v-card dark color="blue-grey lighten-2" style="display: inline-block; width:25%;height: 40px;text-align: center;padding: 10px;"><h3>계획정지</h3></v-card>
+            <v-card style="display: inline-block; width:74.5%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
+          </div>
+
+          <div style="margin-top:10px;">
+            <v-card dark color="blue-grey lighten-2" style="display: inline-block; width:25%;height: 40px;text-align: center;padding: 10px;"><h3>총가용시간</h3></v-card>
+            <v-card style="display: inline-block; width:74.5%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
+          </div>
+
+          <div style="margin-top:10px;">
+            <v-card dark color="blue-grey lighten-2" style="display: inline-block; width:25%;height: 40px;text-align: center;padding: 10px;"><h3>다운타임정지시간</h3></v-card>
+            <v-card style="display: inline-block; width:74.5%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
+          </div>
+
+          <div style="margin-top:10px;">
+            <v-card dark color="blue-grey lighten-2" style="display: inline-block; width:25%;height: 40px;text-align: center;padding: 10px;"><h3>실제가동시간</h3></v-card>
+            <v-card style="display: inline-block; width:74.5%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
+          </div>
+
+        </div>
+      </v-flex>
+    </v-layout>
+
+    <v-layout>
+      <v-flex xs12>
+        <div style="width: 100%; padding: 5px 20px 5px 20px;">
           <v-data-table
             :headers="headers"
             :items="items"
             hide-actions
             class="elevation-1"
+            style="margin-top:20px;"
           >
             <template slot="items" slot-scope="props">
               <td>{{ props.item.name }}</td>
@@ -54,10 +80,11 @@
               <td class="text-xs-right">{{ props.item.iron }}</td>
             </template>
           </v-data-table>
-
         </div>
       </v-flex>
     </v-layout>
+
+
 
   </div>
 </template>
