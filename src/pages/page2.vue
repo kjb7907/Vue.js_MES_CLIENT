@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div id="page2">
 
     <v-layout row wrap style="margin-top: 3px;">
       <v-flex xs12>
@@ -32,7 +32,7 @@
               </v-menu>
             </div>
             <div style="display: inline-block; float:right;">
-              <v-btn small depressed color="amber lighten-1"style="margin: 10px 0px 0px 0px"><v-icon small>local_printshop</v-icon>&nbsp;리포트 출력</v-btn>
+              <v-btn @click="printPage()" small depressed color="amber lighten-1"style="margin: 10px 0px 0px 0px"><v-icon small>local_printshop</v-icon>&nbsp;리포트 출력</v-btn>
             </div>
           </div>
         </v-card>
@@ -54,10 +54,10 @@
         <div style="width: 100%; padding: 5px 20px 5px 20px;">
           <h2 style="margin-bottom: 10px;"><v-icon>build</v-icon>펠렛1호기</h2>
           <v-card dark color="cyan" style="display: inline-block; width:15%;height: 40px;text-align: center; padding: 10px;"><h3>예방정비</h3></v-card>
-          <v-card style="display: inline-block; width:35%; height: 40px;padding: 10px;"><h3>asdasd</h3></v-card>
+          <v-card style="display: inline-block; width:34%; height: 40px;padding: 10px;"><h3>asdasd</h3></v-card>
 
           <v-card dark color="cyan" style="display: inline-block; width:15%;height: 40px;text-align: center; padding: 10px;"><h3>다운타임</h3></v-card>
-          <v-card style="display: inline-block; width:34.1%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
+          <v-card style="display: inline-block; width:34%; height: 40px;padding: 10px;"><h3>asdss</h3></v-card>
 
           <div style="margin-top:10px;">
             <v-card dark color="blue-grey lighten-2" style="display: inline-block; width:25%;height: 40px;text-align: center;padding: 10px;"><h3>총조업시간</h3></v-card>
@@ -156,6 +156,14 @@
             iron: '1%'
           },
         ]
+      }
+    },
+    computed: {
+
+    },
+    methods:{
+      printPage(){
+        this.$store.dispatch('printPage');
       }
     },
     destroyed(){

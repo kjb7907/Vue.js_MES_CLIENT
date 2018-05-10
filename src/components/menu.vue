@@ -2,6 +2,7 @@
   <v-app id="inspire">
 
     <v-navigation-drawer
+      v-if="isPrint"
       fixed
       clipped
       class="grey lighten-4"
@@ -54,7 +55,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar app clipped-left flat fixed height="50" style="border-bottom: solid lightgray 1px; background-color: white">
+    <v-toolbar v-if="isPrint" app clipped-left flat fixed height="50" style="border-bottom: solid lightgray 1px; background-color: white">
       <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
 
       <span class="title ml-3 mr-5">DX-<span class="text">MES</span></span>
@@ -84,8 +85,8 @@
 
     <v-content>
 
-      <tab-bar></tab-bar>
-      <div style="height: 34px;"></div>
+      <tab-bar class="no-print-page"></tab-bar>
+      <div class="no-print-page" style="height: 34px;"></div>
       <tab-content v-for="(i, key, index) in tabs" :key="index" v-show="i.isSelect" :pageId="i.pageId"></tab-content>
 
     </v-content>
@@ -131,8 +132,11 @@
       source: String
     },
     computed: {
-      tabs(){
+      tabs() {
         return this.$store.state.tab.tabs;
+      },
+      isPrint() {
+        return this.$store.state.isPrint
       }
     },
     methods: {
