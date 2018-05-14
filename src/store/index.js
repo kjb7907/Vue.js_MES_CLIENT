@@ -22,11 +22,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    printPage({commit}) {
+    printPage({commit}, payload) {
       commit('hidePrint');
       window.setTimeout(function () {
         window.print();
         commit('showPrint');
+
       },100);
 
     }

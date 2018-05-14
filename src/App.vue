@@ -31,14 +31,5 @@
   text-align: center;
 }
 
-/* 프린트시 출력 제외 CSS */
-@media print {
-  .page-divide {
-    page-break-after: always;
-  }
 
-  .no-print-page {
-    display: none;
-  }
-}
 </style>

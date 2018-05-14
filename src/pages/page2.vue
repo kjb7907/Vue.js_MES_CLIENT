@@ -32,7 +32,7 @@
               </v-menu>
             </div>
             <div style="display: inline-block; float:right;">
-              <v-btn @click="printPage()" small depressed color="amber lighten-1"style="margin: 10px 0px 0px 0px"><v-icon small>local_printshop</v-icon>&nbsp;리포트 출력</v-btn>
+              <v-btn @click="printPage()" class="no-print-page" small depressed color="amber lighten-1"style="margin: 10px 0px 0px 0px"><v-icon small>local_printshop</v-icon>&nbsp;리포트 출력</v-btn>
             </div>
           </div>
         </v-card>
